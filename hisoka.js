@@ -3099,44 +3099,16 @@ let capt = `⭔ Title: ${judul}
 │⭔ ${prefix}setnamebot
 │
 └───────⭓`
-                let btn = [{
-                                urlButton: {
-                                    displayText: 'Source Code',
-                                    url: 'https://github.com/DikaArdnt/Hisoka-Morou'
-                                }
-                            }, {
-                                callButton: {
-                                    displayText: 'Number Phone Owner',
-                                    phoneNumber: '+62 882-9202-4190'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Status Bot',
-                                    id: 'ping'
-                                }
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Contact Owner',
-                                    id: 'owner'
-                                }  
-                            }, {
-                                quickReplyButton: {
-                                    displayText: 'Script',
-                                    id: 'sc'
-                                }
-                            }]
-                         let setbot = db.data.settings[botNumber]
-                        if (setbot.templateImage) {
-                        hisoka.send5ButImg(m.chat, anu, hisoka.user.name, global.thumb, btn, global.thumb)
-                        } else if (setbot.templateGif) {
-                        hisoka.send5ButGif(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
-                        } else if (setbot.templateVid) {
-                        hisoka.send5ButVid(m.chat, anu, hisoka.user.name, global.visoka, btn, global.thumb)
-                        } else if (setbot.templateMsg) {
-                        hisoka.send5ButMsg(m.chat, anu, hisoka.user.name, btn)
-                        } else if (setbot.templateLocation) {
-                        hisoka.send5ButLoc(m.chat, anu, hisoka.user.name, global.thumb, btn)
-                        }
+                 hisoka.sendTextWithMentions(m.chat, anu, m, {
+                   contextInfo: { externalAdReply :{
+    mediaUrl: global.thumb,
+    mediaType: 1,
+    title: `Hisoka - Morou`,
+    thumbnail: await(await fetch(global.thumb)).buffer(),
+    renderLargerThumbnail: true,
+    sourceUrl: ``
+         }}
+  })
                      }
             break
             default:
